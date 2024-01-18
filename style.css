@@ -1,3 +1,33 @@
 body{
+    display: flex;
+    min-height: 100vh;
+    flex-direction:column;
+    align-items: center;
+}
+.calculatorbase{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    background-color: lightgray;
+    width: 400px;
+    height: 600px;
     
+}
+.calculator{
+    background-color: gray;
+    width: 375px;
+    height: 575px;
+    display: flex;
+    justify-content: center;
+    
+}
+.inputbox{
+    background-color: azure;
+    width: 350px;
+    height: 75px;
+    margin-top: 25px;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
 }
