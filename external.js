@@ -32,6 +32,12 @@ function operate(num1, num2, operation){
 }
 function changenumberline(numbutton){
     const buttonelem = numbutton.target;
+    if(buttonelem.innerHTML == "+" || buttonelem.innerHTML == "-" || buttonelem.innerHTML == "/" || buttonelem.innerHTML == "*" ){
+        num = Number(numberline.innerHTML);
+        numarray.push(num);
+        numberline.innerHTML = "";
+        return;
+    } 
     if(buttonelem.innerHTML == "clear"){
         numberline.innerHTML = "";
         return;
@@ -44,6 +50,7 @@ function changenumberline(numbutton){
 
 const numberline = document.querySelector(".numberinput");
 const buttons = document.querySelectorAll("button");
+var numarray = []
 for(i = 0; i < 15; i++){
     buttons[i].addEventListener('click', changenumberline);
 }
