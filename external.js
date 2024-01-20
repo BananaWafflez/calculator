@@ -30,3 +30,20 @@ function operate(num1, num2, operation){
             divide(num1,num2);
     }
 }
+function changenumberline(numbutton){
+    const buttonelem = numbutton.target;
+    if(buttonelem.innerHTML == "clear"){
+        numberline.innerHTML = "";
+        return;
+    }
+    else if(buttonelem.innerHTML == "="){
+        return;
+    }
+    numberline.innerHTML += buttonelem.innerHTML;
+}
+
+const numberline = document.querySelector(".numberinput");
+const buttons = document.querySelectorAll("button");
+for(i = 0; i < 15; i++){
+    buttons[i].addEventListener('click', changenumberline);
+}
