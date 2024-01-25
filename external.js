@@ -47,6 +47,8 @@ function changenumberline(numbutton){
             previousnum = result;
             return;
         }
+            
+        
        return;
         
     } 
@@ -59,8 +61,13 @@ function changenumberline(numbutton){
     }
     else if(buttonelem.innerHTML == "="){
         return;
+    } 
+    if(previousnum == numberline.innerHTML){
+        numberline.innerHTML = "";
+        
     }
     numberline.innerHTML += buttonelem.innerHTML;
+    
 }
 
 const numberline = document.querySelector(".numberinput");
