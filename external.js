@@ -33,26 +33,28 @@ function operate(num1, num2, operation){
 }
 function changenumberline(numbutton){
     const buttonelem = numbutton.target;
-    if(buttonelem.innerHTML == "+" || buttonelem.innerHTML == "-" || buttonelem.innerHTML == "/" || buttonelem.innerHTML == "*" ){
-        num = Number(numberline.innerHTML);
-        numarray.push(num);
-        numarray.push(buttonelem.innerHTML);
-        numberline.innerHTML = "";
-        if(index < 2){
-            index++;
-        }else{
-            var num1 = numarray[0];
-            var num2 = numarray[2];
-            var operation = numarray[1];
-            console.log(num1);
-            console.log(num2);
-            numberline.innerHTML = operate(num1, num2, operation);
-            
+    if(buttonelem.innerHTML == "+" || buttonelem.innerHTML == "-" || buttonelem.innerHTML == "/" || buttonelem.innerHTML == "x" ){
+        currentnum = Number(numberline.innerHTML);
+        operation = buttonelem.innerHTML;
+        if(previousnum == 0){
+            numberline.innerHTML = "";
+            previousnum = currentnum;
+            return;
+        }else if(previousnum != 0){
+            numberline.innerHTML = "";
+            var result = operate(previousnum, currentnum, operation);
+            numberline.innerHTML = result;
+            previousnum = result;
+            return;
         }
-        return;
+       return;
+        
     } 
     if(buttonelem.innerHTML == "clear"){
         numberline.innerHTML = "";
+        previousnum = 0;
+        currentnum = 0;
+        operation = "";
         return;
     }
     else if(buttonelem.innerHTML == "="){
@@ -63,7 +65,9 @@ function changenumberline(numbutton){
 
 const numberline = document.querySelector(".numberinput");
 const buttons = document.querySelectorAll("button");
-var numarray = []
+var currentnum = 0;
+var previousnum = 0;
+var operation = ''
 var index = 1;
 for(i = 0; i < 15; i++){
     buttons[i].addEventListener('click', changenumberline);
