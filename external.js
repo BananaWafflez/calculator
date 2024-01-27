@@ -39,13 +39,14 @@ function changenumberline(numbutton){
         if(previousnum == 0){
             numberline.innerHTML = "";
             previousnum = currentnum;
-        }else if(previousnum != 0){
+        }else if(previousnum != 0 && operation != ""){
             numberline.innerHTML = "";
             var result = operate(previousnum, currentnum, operation);
             numberline.innerHTML = result;
             previousnum = result;
             
         }
+        numberline.innerHTML = "";
         operation = buttonelem.innerHTML;
         
        return;
@@ -59,10 +60,16 @@ function changenumberline(numbutton){
         return;
     }
     else if(buttonelem.innerHTML == "="){
-        currentnum = numberline.innerHTML;
+        currentnum = Number(numberline.innerHTML);
+        var result = operate(previousnum, currentnum, operation);
         console.log(currentnum);
         console.log(previousnum);
-        numberline.innerHTML = operate(previousnum,currentnum,operation);
+        console.log(operation);
+        numberline.innerHTML = result;
+        currentnum = "";
+        operation = "";
+        previousnum = result;
+        
         return;
     } 
     if(previousnum == numberline.innerHTML){
