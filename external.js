@@ -35,19 +35,21 @@ function changenumberline(numbutton){
     const buttonelem = numbutton.target;
     if(buttonelem.innerHTML == "+" || buttonelem.innerHTML == "-" || buttonelem.innerHTML == "/" || buttonelem.innerHTML == "x" ){
         currentnum = Number(numberline.innerHTML);
-        operation = buttonelem.innerHTML;
+        
         if(previousnum == 0){
             numberline.innerHTML = "";
             previousnum = currentnum;
+            operation = buttonelem.innerHTML;
             return;
         }else if(previousnum != 0){
             numberline.innerHTML = "";
             var result = operate(previousnum, currentnum, operation);
             numberline.innerHTML = result;
             previousnum = result;
+            operation = buttonelem.innerHTML;
             return;
         }
-            
+        
         
        return;
         
@@ -60,6 +62,10 @@ function changenumberline(numbutton){
         return;
     }
     else if(buttonelem.innerHTML == "="){
+        currentnum = numberline.innerHTML;
+        console.log(currentnum);
+        console.log(previousnum);
+        numberline.innerHTML = operate(previousnum,currentnum,operation);
         return;
     } 
     if(previousnum == numberline.innerHTML){
