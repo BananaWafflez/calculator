@@ -39,17 +39,14 @@ function changenumberline(numbutton){
         if(previousnum == 0){
             numberline.innerHTML = "";
             previousnum = currentnum;
-            operation = buttonelem.innerHTML;
-            return;
         }else if(previousnum != 0){
             numberline.innerHTML = "";
             var result = operate(previousnum, currentnum, operation);
             numberline.innerHTML = result;
             previousnum = result;
-            operation = buttonelem.innerHTML;
-            return;
+            
         }
-        
+        operation = buttonelem.innerHTML;
         
        return;
         
